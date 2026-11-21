@@ -17,6 +17,11 @@ struct CharacterDTO: Decodable {
     let status: String
     let species: String
     let imageURL: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name, status, species
+        case imageURL = "image"
+    }
 }
 
 extension CharacterDTO {
