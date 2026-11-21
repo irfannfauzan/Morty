@@ -163,5 +163,6 @@ extension CharacterListViewController: UITableViewDataSource {
 extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        presenter.didSelectCharacter(at: indexPath.row)
     }
 }
