@@ -20,7 +20,7 @@ enum CharacterListModuleBuilder {
         
         presenter.view = view
         interactor.presenter = presenter
-        router.view = view
+        router.viewController = view
         
         return view
     }
