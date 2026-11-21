@@ -12,6 +12,7 @@ protocol CharacterListPresenterProtocol: AnyObject {
     func character(at index: Int) -> Character
     func viewDidLoad()
     func viewDidRetry()
+    func didSelectCharacter(at index: Int)
 }
 
 final class CharacterListPresenter: CharacterListPresenterProtocol {
@@ -39,6 +40,11 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
     
     func viewDidRetry() {
         loadCharacters()
+    }
+    
+    func didSelectCharacter(at index: Int) {
+        guard characters.indices.contains(index) else { return }
+        router.navigateToDetail(character: characters[index])
     }
     
     private func loadCharacters() {

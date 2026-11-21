@@ -25,6 +25,7 @@ final class CharacterListViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.dataSource = self
+        table.delegate = self
         table.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.identifier)
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
@@ -156,5 +157,11 @@ extension CharacterListViewController: UITableViewDataSource {
         }
         cell.configure(with: presenter.character(at: indexPath.row))
         return cell
+    }
+}
+
+extension CharacterListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

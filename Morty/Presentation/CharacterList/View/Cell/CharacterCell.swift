@@ -65,10 +65,13 @@ final class CharacterCell: UITableViewCell {
         contentView.addSubview(avatarView)
         contentView.addSubview(textStack)
 
+        let bottomConstraint = avatarView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+        bottomConstraint.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
             avatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             avatarView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            avatarView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            bottomConstraint,
             avatarView.widthAnchor.constraint(equalToConstant: 56),
             avatarView.heightAnchor.constraint(equalToConstant: 56),
 
