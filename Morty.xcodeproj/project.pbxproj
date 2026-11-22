@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C173EDCC30B2CFAA0061A6B8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C173EDCB30B2CFAA0061A6B8 /* Kingfisher */; };
 		C173EDD430B2D2C00061A6B8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C173EDD330B2D2C00061A6B8 /* Alamofire */; };
+		C173EDD730B2D7030061A6B8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C173EDD630B2D7030061A6B8 /* Moya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 			files = (
 				C173EDCC30B2CFAA0061A6B8 /* Kingfisher in Frameworks */,
 				C173EDD430B2D2C00061A6B8 /* Alamofire in Frameworks */,
+				C173EDD730B2D7030061A6B8 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				C173EDCB30B2CFAA0061A6B8 /* Kingfisher */,
 				C173EDD330B2D2C00061A6B8 /* Alamofire */,
+				C173EDD630B2D7030061A6B8 /* Moya */,
 			);
 			productName = Morty;
 			productReference = C18A3DE230B1CDD7001549BF /* Morty.app */;
@@ -119,6 +122,7 @@
 			packageReferences = (
 				C173EDCA30B2CFAA0061A6B8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C173EDD230B2D2C00061A6B8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C173EDD530B2D7030061A6B8 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C18A3DE330B1CDD7001549BF /* Products */;
@@ -374,6 +378,14 @@
 				minimumVersion = 5.12.2;
 			};
 		};
+		C173EDD530B2D7030061A6B8 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -386,6 +398,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C173EDD230B2D2C00061A6B8 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		C173EDD630B2D7030061A6B8 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C173EDD530B2D7030061A6B8 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

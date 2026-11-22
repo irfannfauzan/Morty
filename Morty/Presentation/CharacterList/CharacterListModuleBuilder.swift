@@ -9,11 +9,12 @@ import UIKit
 
 enum CharacterListModuleBuilder {
     static func build() -> UIViewController {
-        let apiClient = APIClient()
-        let alamofireApiClient = AlamofireAPIClient()
-
-        let repository = CharacterRepository(apiClient: alamofireApiClient)
-        let useCase = FetchCharacterUseCase(repository: repository)
+//        let apiClient = APIClient()
+//        let alamofireApiClient = AlamofireAPIClient()
+//        let repository = CharacterRepository(apiClient: alamofireApiClient)
+        
+        let moyaCharacterRepository = MoyaCharacterRepository()
+        let useCase = FetchCharacterUseCase(repository: moyaCharacterRepository)
         
         let router = CharacterListRouter()
         let interactor = CharacterListInteractor(fetchCharactersUseCase: useCase)
