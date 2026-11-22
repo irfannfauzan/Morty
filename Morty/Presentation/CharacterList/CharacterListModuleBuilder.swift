@@ -10,7 +10,9 @@ import UIKit
 enum CharacterListModuleBuilder {
     static func build() -> UIViewController {
         let apiClient = APIClient()
-        let repository = CharacterRepository(apiClient: apiClient)
+        let alamofireApiClient = AlamofireAPIClient()
+
+        let repository = CharacterRepository(apiClient: alamofireApiClient)
         let useCase = FetchCharacterUseCase(repository: repository)
         
         let router = CharacterListRouter()

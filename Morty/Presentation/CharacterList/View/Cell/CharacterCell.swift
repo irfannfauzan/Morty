@@ -6,14 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class CharacterCell: UITableViewCell {
 
     // MARK: - Properties
 
     static let identifier = "CharacterCell"
-
-    private var imageTask: Task<Void, Never>?
 
     // MARK: - UI
 
@@ -85,8 +84,7 @@ final class CharacterCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageTask?.cancel()
-        imageTask = nil
+        avatarView.kf.cancelDownloadTask()
         avatarView.image = nil
     }
 
@@ -95,14 +93,11 @@ final class CharacterCell: UITableViewCell {
     func configure(with character: Character) {
         nameLabel.text = character.name
         infoLabel.text = "\(character.status) · \(character.species)"
-
-        guard let url = character.imageURL else { return }
-
-        imageTask = Task { [weak self] in
-            guard let (data, _) = try? await URLSession.shared.data(from: url),
-                  let image = UIImage(data: data),
-                  !Task.isCancelled else { return }
-            self?.avatarView.image = image
-        }
+        avatarView.kf.setImage(
+            with: character.imageURL,
+            placeholder: UIImage(systemName: "person.crop.square"),
+            options: [.transition(.fade(0.2))]
+        )
+        
     }
 }
