@@ -12,8 +12,8 @@ enum CharacterListModuleBuilder {
 //        let apiClient = APIClient()
 //        let alamofireApiClient = AlamofireAPIClient()
 //        let repository = CharacterRepository(apiClient: alamofireApiClient)
-        
-        let moyaCharacterRepository = MoyaCharacterRepository()
+        let client = MoyaApiClient<MoyaEndpoint>()
+        let moyaCharacterRepository = MoyaCharacterRepository(client: client)
         let useCase = FetchCharacterUseCase(repository: moyaCharacterRepository)
         
         let router = CharacterListRouter()

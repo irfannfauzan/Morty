@@ -20,5 +20,4 @@ final class CharacterListRouter: CharacterListRouterProtocol {
         placeholder.title = character.name
         viewController?.navigationController?.pushViewController(placeholder, animated: true)
     }
-
 }
