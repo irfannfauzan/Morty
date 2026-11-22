@@ -6,7 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F16AB446C5CC6EE48531C2CC /* Pods_Morty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB89FD92A4CBAD02F44BE70 /* Pods_Morty.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		0AB89FD92A4CBAD02F44BE70 /* Pods_Morty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Morty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B8EEC33EEF5ACA008882A7C /* Pods-Morty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Morty.release.xcconfig"; path = "Target Support Files/Pods-Morty/Pods-Morty.release.xcconfig"; sourceTree = "<group>"; };
+		9CD2E470830726FE53E4C087 /* Pods-Morty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Morty.debug.xcconfig"; path = "Target Support Files/Pods-Morty/Pods-Morty.debug.xcconfig"; sourceTree = "<group>"; };
 		C18A3DE230B1CDD7001549BF /* Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Morty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -36,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F16AB446C5CC6EE48531C2CC /* Pods_Morty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97BFBDB5626D884E79897C3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0AB89FD92A4CBAD02F44BE70 /* Pods_Morty.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C18A3DD930B1CDD6001549BF = {
 			isa = PBXGroup;
 			children = (
 				C18A3DE430B1CDD7001549BF /* Morty */,
 				C18A3DE330B1CDD7001549BF /* Products */,
+				C748303BEBB974556E665B1C /* Pods */,
+				97BFBDB5626D884E79897C3D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +76,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C748303BEBB974556E665B1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9CD2E470830726FE53E4C087 /* Pods-Morty.debug.xcconfig */,
+				3B8EEC33EEF5ACA008882A7C /* Pods-Morty.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -65,9 +93,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C18A3DF530B1CDD8001549BF /* Build configuration list for PBXNativeTarget "Morty" */;
 			buildPhases = (
+				AA4BFE83A98CC3AF2BAD8C54 /* [CP] Check Pods Manifest.lock */,
 				C18A3DDE30B1CDD7001549BF /* Sources */,
 				C18A3DDF30B1CDD7001549BF /* Frameworks */,
 				C18A3DE030B1CDD7001549BF /* Resources */,
+				65C534FA55CA9E019112EF47 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,8 +107,6 @@
 				C18A3DE430B1CDD7001549BF /* Morty */,
 			);
 			name = Morty;
-			packageProductDependencies = (
-			);
 			productName = Morty;
 			productReference = C18A3DE230B1CDD7001549BF /* Morty.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +155,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		65C534FA55CA9E019112EF47 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Morty/Pods-Morty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Morty/Pods-Morty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Morty/Pods-Morty-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA4BFE83A98CC3AF2BAD8C54 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Morty-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C18A3DDE30B1CDD7001549BF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,6 +210,7 @@
 /* Begin XCBuildConfiguration section */
 		C18A3DF630B1CDD8001549BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CD2E470830726FE53E4C087 /* Pods-Morty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -172,6 +243,7 @@
 		};
 		C18A3DF730B1CDD8001549BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B8EEC33EEF5ACA008882A7C /* Pods-Morty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
