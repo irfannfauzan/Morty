@@ -15,9 +15,14 @@ enum CharacterListModuleBuilder {
         let client = MoyaApiClient<MoyaEndpoint>()
         let moyaCharacterRepository = MoyaCharacterRepository(client: client)
         let useCase = FetchCharacterUseCase(repository: moyaCharacterRepository)
+        let favoriteRepository = FavoriteRepository()
+
+        let interactor = CharacterListInteractor(
+            fetchCharacterUseCase: useCase,
+            favoriteRepository: favoriteRepository
+        )
         
         let router = CharacterListRouter()
-        let interactor = CharacterListInteractor(fetchCharactersUseCase: useCase)
         let presenter = CharacterListPresenter(interactor: interactor, router: router)
         let view = CharacterListViewController(presenter: presenter)
         

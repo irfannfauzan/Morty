@@ -9,33 +9,53 @@ import Foundation
 
 protocol CharacterListInteractorProtocol: AnyObject {
     func fetchCharacters(page: Int)
+    func isFavorite(id: Int) -> Bool
+    func toggleFavorite(_ character: Character) -> Bool
 }
 
 protocol CharacterListInteractorOutputProtocol: AnyObject {
     func didFetchCharacters(_ characters: [Character])
-    func didFailFetchCharacters(_ message: String)
+    func didFailFetchingCharacters(_ message: String)
 }
 
 final class CharacterListInteractor: CharacterListInteractorProtocol {
+
     weak var presenter: CharacterListInteractorOutputProtocol?
-    
-    private let fetchCharactersUseCase: FetchCharacterUseCaseProtocol
-    
-    init(fetchCharactersUseCase: FetchCharacterUseCaseProtocol) {
-        self.fetchCharactersUseCase = fetchCharactersUseCase
+
+    private let fetchCharacterUseCase: FetchCharacterUseCaseProtocol
+    private let favoriteRepository: FavoriteRepositoryProtocol
+
+    init(
+        fetchCharacterUseCase: FetchCharacterUseCaseProtocol,
+        favoriteRepository: FavoriteRepositoryProtocol
+    ) {
+        self.fetchCharacterUseCase = fetchCharacterUseCase
+        self.favoriteRepository = favoriteRepository
     }
-    
+
     func fetchCharacters(page: Int) {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let result = try await fetchCharactersUseCase.execute(page: page)
-                await MainActor.run {
-                    self.presenter?.didFetchCharacters(result)
-                }
+                let characters = try await fetchCharacterUseCase.execute(page: page)
+                presenter?.didFetchCharacters(characters)
             } catch {
-                presenter?.didFailFetchCharacters(error.localizedDescription)
+                presenter?.didFailFetchingCharacters(error.localizedDescription)
             }
+        }
+    }
+
+    func isFavorite(id: Int) -> Bool {
+        favoriteRepository.isFavorite(id: id)
+    }
+
+    func toggleFavorite(_ character: Character) -> Bool {
+        if favoriteRepository.isFavorite(id: character.id) {
+            favoriteRepository.removeFavorite(id: character.id)
+            return false
+        } else {
+            favoriteRepository.addFavorite(character)
+            return true
         }
     }
 }

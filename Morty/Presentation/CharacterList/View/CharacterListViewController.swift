@@ -12,8 +12,8 @@ protocol CharacterListViewProtocol: AnyObject {
     func showCharacters()
     func showEmpty(message: String)
     func showError(message: String)
+    func reloadCharacter(at index: Int)              
 }
-
 final class CharacterListViewController: UIViewController {
 
     // MARK: - Properties
@@ -50,7 +50,7 @@ final class CharacterListViewController: UIViewController {
         var config = UIButton.Configuration.filled()
         config.title = "Try again"
         return UIButton(configuration: config, primaryAction: UIAction { [weak self] _ in
-            self?.presenter.viewDidRetry()
+            self?.presenter.didTapRetry()
         })
     }()
 
@@ -139,6 +139,10 @@ extension CharacterListViewController: CharacterListViewProtocol {
         messageLabel.text = message
         retryButton.isHidden = false
     }
+    
+    func reloadCharacter(at index: Int) {
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -155,7 +159,15 @@ extension CharacterListViewController: UITableViewDataSource {
         ) as? CharacterCell else {
             return UITableViewCell()
         }
-        cell.configure(with: presenter.character(at: indexPath.row))
+
+        let index = indexPath.row
+        cell.configure(
+            with: presenter.character(at: index),
+            isFavorite: presenter.isFavorite(at: index)
+        )
+        cell.onFavoriteTap = { [weak self] in
+            self?.presenter.didTapFavorite(at: index)
+        }
         return cell
     }
 }

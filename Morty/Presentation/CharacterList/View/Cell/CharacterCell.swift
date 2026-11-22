@@ -13,6 +13,8 @@ final class CharacterCell: UITableViewCell {
     // MARK: - Properties
 
     static let identifier = "CharacterCell"
+    
+    var onFavoriteTap: (() -> Void)?
 
     // MARK: - UI
 
@@ -46,6 +48,16 @@ final class CharacterCell: UITableViewCell {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .systemPink
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addAction(UIAction { [weak self] _ in
+            self?.onFavoriteTap?()
+        }, for: .touchUpInside)
+        return button
+    }()
 
     // MARK: - Init
 
@@ -63,6 +75,7 @@ final class CharacterCell: UITableViewCell {
     private func setupLayout() {
         contentView.addSubview(avatarView)
         contentView.addSubview(textStack)
+        contentView.addSubview(favoriteButton)
 
         let bottomConstraint = avatarView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         bottomConstraint.priority = .defaultHigh
@@ -75,8 +88,13 @@ final class CharacterCell: UITableViewCell {
             avatarView.heightAnchor.constraint(equalToConstant: 56),
 
             textStack.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 12),
-            textStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            textStack.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor)
+            textStack.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -8),
+            textStack.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor),
+
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            favoriteButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 44),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
 
@@ -86,18 +104,22 @@ final class CharacterCell: UITableViewCell {
         super.prepareForReuse()
         avatarView.kf.cancelDownloadTask()
         avatarView.image = nil
+        onFavoriteTap = nil
     }
 
     // MARK: - Configure
 
-    func configure(with character: Character) {
+    func configure(with character: Character, isFavorite: Bool) {
         nameLabel.text = character.name
         infoLabel.text = "\(character.status) · \(character.species)"
+
+        let iconName = isFavorite ? "heart.fill" : "heart"
+        favoriteButton.setImage(UIImage(systemName: iconName), for: .normal)
+
         avatarView.kf.setImage(
             with: character.imageURL,
             placeholder: UIImage(systemName: "person.crop.square"),
             options: [.transition(.fade(0.2))]
         )
-        
     }
 }
