@@ -14,10 +14,7 @@ protocol CharacterListRouterProtocol: AnyObject {
 final class CharacterListRouter: CharacterListRouterProtocol {
     weak var viewController: UIViewController?
     func navigateToDetail(character: Character) {
-        // sementara, nanti diganti CharacterDetailModuleBuilder.build(character:)
-        let placeholder = UIViewController()
-        placeholder.view.backgroundColor = .systemBackground
-        placeholder.title = character.name
-        viewController?.navigationController?.pushViewController(placeholder, animated: true)
+        let detail = CharacterDetailModuleBuilder.build(character: character)
+        viewController?.navigationController?.pushViewController(detail, animated: true)
     }
 }
