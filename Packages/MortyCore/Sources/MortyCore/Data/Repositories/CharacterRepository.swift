@@ -7,14 +7,14 @@
 
 import Foundation
 
-final class CharacterRepository: CharacterRepositoryProtocol {
+public final class CharacterRepository: CharacterRepositoryProtocol {
     private let apiClient: APIClientProtocol
-    
-    init(apiClient: APIClientProtocol) {
+
+    public init(apiClient: APIClientProtocol) {
         self.apiClient = apiClient
     }
-    
-    func fetchCharacter(page: Int) async throws -> [Character] {
+
+    public func fetchCharacter(page: Int) async throws -> [Character] {
         let response: CharacterListResponse = try await apiClient.request(.fetchCharacter(page: page))
         return response.results.map { $0.toDomain() }
     }

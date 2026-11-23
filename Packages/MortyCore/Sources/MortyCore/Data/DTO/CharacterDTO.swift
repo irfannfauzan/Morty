@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct CharacterListResponse: Decodable {
-    let results: [CharacterDTO]
+public struct CharacterListResponse: Decodable {
+    public let results: [CharacterDTO]
 }
 
-struct CharacterDTO: Decodable {
+public struct CharacterDTO: Decodable {
     let id: Int
     let name: String
     let status: String
     let species: String
     let imageURL: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name, status, species
         case imageURL = "image"
@@ -25,12 +25,13 @@ struct CharacterDTO: Decodable {
 }
 
 extension CharacterDTO {
-    func toDomain() -> Character {
-        Character(id: id,
-                  name: name,
-                  status: status,
-                  species: species,
-                  imageURL: URL(string: imageURL)
+    public func toDomain() -> Character {
+        Character(
+            id: id,
+            name: name,
+            status: status,
+            species: species,
+            imageURL: URL(string: imageURL)
         )
     }
 }

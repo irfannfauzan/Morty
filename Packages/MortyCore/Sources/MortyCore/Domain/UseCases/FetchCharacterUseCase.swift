@@ -5,18 +5,18 @@
 //  Created by Vokal-Ican on 21/11/26.
 //
 
-protocol FetchCharacterUseCaseProtocol {
+public protocol FetchCharacterUseCaseProtocol {
     func execute(page: Int) async throws -> [Character]
 }
 
-final class FetchCharacterUseCase: FetchCharacterUseCaseProtocol {
+public final class FetchCharacterUseCase: FetchCharacterUseCaseProtocol {
     private let repository: CharacterRepositoryProtocol
-    
-    init(repository: CharacterRepositoryProtocol) {
+
+    public init(repository: CharacterRepositoryProtocol) {
         self.repository = repository
     }
-    
-    func execute(page: Int) async throws -> [Character] {
+
+    public func execute(page: Int) async throws -> [Character] {
         try await repository.fetchCharacter(page: page)
     }
 }

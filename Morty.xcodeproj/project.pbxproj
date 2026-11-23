@@ -13,6 +13,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C172926C30B41795004D4465 /* MortyCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MortyCore; path = Packages/MortyCore; sourceTree = "<group>"; };
 		C18A3DE230B1CDD7001549BF /* Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Morty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -54,6 +55,7 @@
 		C18A3DD930B1CDD6001549BF = {
 			isa = PBXGroup;
 			children = (
+				C172926C30B41795004D4465 /* MortyCore */,
 				C18A3DE430B1CDD7001549BF /* Morty */,
 				C18A3DE330B1CDD7001549BF /* Products */,
 			);

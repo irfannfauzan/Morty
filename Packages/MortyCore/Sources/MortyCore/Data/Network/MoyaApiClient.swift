@@ -19,22 +19,24 @@ final class MoyaApiClient<Target: TargetType> {
         self.decoder = decoder
     }
     
-    func request<T:Decodable>(_ target: Target) async throws -> T {
-        let response: Response = try await withCheckedThrowingContinuation { continuation in
+    func request<T: Decodable>(_ target: Target) async throws -> T {
+        let (data, statusCode): (Data, Int) = try await withCheckedThrowingContinuation { continuation in
             provider.request(target) { result in
                 switch result {
                 case .success(let response):
-                    continuation.resume(returning: response)
+                    continuation.resume(returning: (response.data, response.statusCode))
                 case .failure(let error):
                     continuation.resume(throwing: error)
                 }
             }
         }
-        
-        guard (200...299).contains(response.statusCode) else { throw APIError.httpStatus(response.statusCode, message: nil) }
-        
+
+        guard (200...299).contains(statusCode) else {
+            throw APIError.httpStatus(statusCode, message: nil)
+        }
+
         do {
-            return try decoder.decode(T.self, from: response.data)
+            return try decoder.decode(T.self, from: data)
         } catch {
             throw APIError.decoding(error)
         }

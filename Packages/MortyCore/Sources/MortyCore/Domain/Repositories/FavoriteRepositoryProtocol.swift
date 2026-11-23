@@ -5,6 +5,7 @@
 //  Created by Vokal-Ican on 22/11/26.
 //
 
+@MainActor
 protocol FavoriteRepositoryProtocol {
     func fetchFavorites() -> [Character]
     func isFavorite(id: Int) -> Bool

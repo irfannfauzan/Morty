@@ -7,6 +7,7 @@
 
 import CoreData
 
+@MainActor
 final class FavoriteRepository: FavoriteRepositoryProtocol {
 
     private let stack: CoreDataStack

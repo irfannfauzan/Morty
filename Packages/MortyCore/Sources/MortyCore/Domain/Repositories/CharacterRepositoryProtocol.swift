@@ -5,6 +5,6 @@
 //  Created by Vokal-Ican on 21/11/26.
 //
 
-protocol CharacterRepositoryProtocol {
+public protocol CharacterRepositoryProtocol {
     func fetchCharacter(page: Int) async throws -> [Character]
 }

@@ -7,15 +7,16 @@
 
 import CoreData
 
+@MainActor
 final class CoreDataStack {
     static let shared = CoreDataStack()
-    
+
     let container: NSPersistentContainer
-    
+
     var context: NSManagedObjectContext {
         container.viewContext
     }
-    
+
     private init() {
         container = NSPersistentContainer(name: "Morty")
         container.loadPersistentStores { _, error in
@@ -24,7 +25,7 @@ final class CoreDataStack {
             }
         }
     }
-    
+
     func saveContext() {
         guard context.hasChanges else { return }
         do {
