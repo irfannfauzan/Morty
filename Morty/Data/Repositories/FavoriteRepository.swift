@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import MortyCore
 
 @MainActor
 final class FavoriteRepository: FavoriteRepositoryProtocol {

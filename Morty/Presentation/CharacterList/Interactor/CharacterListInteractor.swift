@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MortyCore
 
 protocol CharacterListInteractorProtocol: AnyObject {
     func fetchCharacters(page: Int)

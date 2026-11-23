@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MortyCore
 
 protocol CharacterListPresenterProtocol: AnyObject {
     var numberOfCharacters: Int { get }

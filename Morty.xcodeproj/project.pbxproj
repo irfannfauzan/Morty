@@ -10,6 +10,7 @@
 		C173EDCC30B2CFAA0061A6B8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C173EDCB30B2CFAA0061A6B8 /* Kingfisher */; };
 		C173EDD430B2D2C00061A6B8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C173EDD330B2D2C00061A6B8 /* Alamofire */; };
 		C173EDD730B2D7030061A6B8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C173EDD630B2D7030061A6B8 /* Moya */; };
+		C1C06BDD30B41CB500B9D0FF /* MortyCore in Frameworks */ = {isa = PBXBuildFile; productRef = C1C06BDC30B41CB500B9D0FF /* MortyCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C173EDCC30B2CFAA0061A6B8 /* Kingfisher in Frameworks */,
+				C1C06BDD30B41CB500B9D0FF /* MortyCore in Frameworks */,
 				C173EDD430B2D2C00061A6B8 /* Alamofire in Frameworks */,
 				C173EDD730B2D7030061A6B8 /* Moya in Frameworks */,
 			);
@@ -57,6 +59,7 @@
 			children = (
 				C172926C30B41795004D4465 /* MortyCore */,
 				C18A3DE430B1CDD7001549BF /* Morty */,
+				C1C06BDB30B41CB500B9D0FF /* Frameworks */,
 				C18A3DE330B1CDD7001549BF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +70,13 @@
 				C18A3DE230B1CDD7001549BF /* Morty.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C1C06BDB30B41CB500B9D0FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,6 +102,7 @@
 				C173EDCB30B2CFAA0061A6B8 /* Kingfisher */,
 				C173EDD330B2D2C00061A6B8 /* Alamofire */,
 				C173EDD630B2D7030061A6B8 /* Moya */,
+				C1C06BDC30B41CB500B9D0FF /* MortyCore */,
 			);
 			productName = Morty;
 			productReference = C18A3DE230B1CDD7001549BF /* Morty.app */;
@@ -405,6 +416,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C173EDD530B2D7030061A6B8 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		C1C06BDC30B41CB500B9D0FF /* MortyCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MortyCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

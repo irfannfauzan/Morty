@@ -5,6 +5,8 @@
 //  Created by Vokal-Ican on 23/11/26.
 //
 
+import MortyCore
+
 protocol CharacterDetailPresenterProtocol: AnyObject {
     func viewDidLoad()
 }

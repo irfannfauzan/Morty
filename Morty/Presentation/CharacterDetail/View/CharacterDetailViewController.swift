@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MortyCore
 import Kingfisher
 
 protocol CharacterDetailViewProtocol: AnyObject {

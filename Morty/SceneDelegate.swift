@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MortyCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MortyCore
 import Kingfisher
 
 final class CharacterCell: UITableViewCell {

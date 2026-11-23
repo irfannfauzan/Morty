@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MortyCore
 import Moya
 
 final class MoyaCharacterRepository: CharacterRepositoryProtocol {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MortyCore
 
 enum CharacterListModuleBuilder {
     static func build() -> UIViewController {

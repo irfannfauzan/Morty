@@ -5,6 +5,8 @@
 //  Created by Vokal-Ican on 22/11/26.
 //
 
+import MortyCore
+
 @MainActor
 protocol FavoriteRepositoryProtocol {
     func fetchFavorites() -> [Character]
